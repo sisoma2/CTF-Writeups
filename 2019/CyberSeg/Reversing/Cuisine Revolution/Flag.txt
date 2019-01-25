@@ -1,0 +1,3 @@
+Abrimos el binario en IDA y vemos que tiene truco antiDebug con ptrace.
+Tiene una comparación de flag correcta e incorrecta.
+Vamos a usar angr para llegar a la instrucción 0x12AE que es la de good boy y evitar la de 0x12D0 que es la de bad boy.

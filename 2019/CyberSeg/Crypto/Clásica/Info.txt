@@ -1,0 +1,11 @@
+En la criptografía, como en la cerveza. Siempre viene bien alguna clásica:
+
+sa okhbx dpejaja gc uad ei wlk tau becufwielhtkfaf effi uw sa okhbx pvmxauan ne zlm sgygjigxtbv oszvfaa fo chdohs jw btkvimdce xrhvn fo cbudls p ubyc loghmpe jw llcloedce eillscxaypfrxv hhsq k drqpqmesysg waurv gprkpcc on zlm rsmwjigxtbv oszvfaa a drrv ei gfdvr fyrngp ewgwjtq lrvomerkw f cworcr nshvjhdq nefwbge ggy sw caors wyrnl y deea hrymcairky ea epge jm hrqwa rv mmkvjv ahbugdes gff aopys sopvecwz dg vúphop psj hyipmicdmiw zfnrgnirquiw jgu lgfaqxse plhblq kghd z qeclh sqwof pvc gcszieys rq ushf hhrc va phsziqs f pcba yd dvmglvgtkfvd qsv vkv hgwof gfgmuako ootru fwxv tvnkdo ilhirvjl lc plnj fw lrurapnbrhsw ulw zop nof fpwej ibe uo lyhwer dmf bkon crs iwf vllgqaplpr siyhnkjaod fp zzsqe c va sdcvmts ke nk cruwidr
+
+Lo metemos en un cracker de Vigenere online y nos saca la clave.
+https://www.guballa.de/vigenere-solver
+
+Clear text using key "hackandbeers":
+la mahou clasica es una de sus mas representativas bebe de la mahou original de mil ochocientos noventa de cuando se utilizaba tapon de corcho y cuya botella se elaboraba artesanalmente paso a denominarse mahou clasica en mil novecientos noventa y tres de color dorado aspecto brillante y cuerpo moderado destaca por su sabor suave y buen equilibrio en boca su aroma es ligero afrutado con tonos florales de lúpulo los principales ingredientes son levadura lupulo agua y malta somos muy clasicos en todo para la cerveza y para la criptografia por eso hemos decidido meter este bonito vigenere la flag es hackandbeers que son dos cosas que se llevan muy bien por eso delegacion organizaba el viaje a la fabrica de la cerveza
+
+flag{hackandbeers}

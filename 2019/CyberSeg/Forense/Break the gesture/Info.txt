@@ -1,0 +1,3 @@
+Leyendo el titulo nos damos cuenta que es un fichero gesture de Android.
+Descargamos de Github el programa AndroidPatternLock y la flag es el pattern encontrado.
+flag{210345876}

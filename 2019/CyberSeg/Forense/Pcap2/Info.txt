@@ -1,0 +1,5 @@
+Se trata de una captura de un hub USB.
+Se detecta en los primeros paquetes que se trata de un Keyboar Logitech.
+Se usa un script en Python para sacar los valores y mapearlos al teclado.
+
+FLAG{USBMONITOR}

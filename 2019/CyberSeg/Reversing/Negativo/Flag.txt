@@ -1,0 +1,6 @@
+Accedemos al fichero principal llamado "app.asar".
+Se trata de una aplicación hecha en Electron.
+Vemos que hay una parte del código en la que se descifra la flag.
+Ejecutamos con NodeJS el fichero para descifrar la flag.
+
+flag{show_the_code}

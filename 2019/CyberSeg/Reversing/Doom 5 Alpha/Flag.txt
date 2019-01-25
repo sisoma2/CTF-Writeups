@@ -1,0 +1,2 @@
+Abrimos el fichero en IDA, vemos que es un cifrado XOR.
+Picamos un script sencillo en Python para resolver el cifrado.

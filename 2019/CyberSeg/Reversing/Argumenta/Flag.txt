@@ -1,0 +1,4 @@
+Abrimos el binario en IDA y vemos que se tiene que añadir un argumento.
+Se comprueba el argumento caracter a caracter.
+
+flag:retorcido

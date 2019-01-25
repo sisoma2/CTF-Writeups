@@ -1,0 +1,3 @@
+Desciframos la imagen como pista jugando con los parametros en Forensically.
+Buscamos la frase en Google y vemos que se trata de un personaje del Mercader de Venecia.
+flag{Shylock}
