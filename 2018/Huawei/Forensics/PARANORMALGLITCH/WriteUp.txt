@@ -1,0 +1,5 @@
+Lanzamos StegoVeritas
+Abrimos el fichero trailing data
+Observamos chunks IHDR e IDAT tipicos de fichero png
+Renombramos a .png pero falla.
+Falta los magic numbers de PNG se añaden y FLAG!

