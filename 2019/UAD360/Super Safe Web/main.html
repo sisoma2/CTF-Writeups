@@ -1,0 +1,36 @@
+<html>
+<head>
+	
+	<script type="text/javascript">
+		function check_flag(){
+			var check_flag_native = Module.cwrap('check_flag', 'number', ['array','number']);
+
+			var flag = document.getElementById("flag").value;
+
+			var enc = new TextEncoder();
+			var byteArray = enc.encode(flag);
+			//var buffer = Module._malloc(byteArray.length);
+			//Module.HEAP8.set(byteArray, 1);
+
+			var result = check_flag_native(byteArray, byteArray.length);
+
+			var correct_flag = "uad360{not_the_flag}";
+			if(result){
+				correct_flag = "uad360{"+ flag +"}";
+			}
+			document.getElementById("result").innerHTML = correct_flag;
+		}
+	</script>
+
+</head>
+
+<body>
+
+	<script src="index.js"></script>
+
+	<input type="text" id="flag"/>
+	<button onclick="check_flag()">Check flag!</button>
+	<div id="result"></div>
+
+</body>
+</html>
