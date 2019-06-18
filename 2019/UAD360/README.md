@@ -51,7 +51,8 @@ So if we get all the constant values in decimal and we convert them to ASCII we 
 
 !['ASCII Chars'](Super%20Safe%20Web/images/ascii_chars.JPG)
 
-If we reorder the chars to w3b455embly_15_funny we can see that this is the flag:
+If we reorder the chars to `w3b455embly_15_funny` we can see that this is the flag:
+
 !['Flag'](Super%20Safe%20Web/images/flag.JPG)
 
 ### Dummies
