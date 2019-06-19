@@ -1,6 +1,6 @@
 from z3 import *
 
-def ascii_printable(x):
+def ascii_numbers(x):
     return And(x  > ord('/'), x  < ord(':') )
 
 def nor (a,b):
@@ -9,15 +9,10 @@ def nor (a,b):
 LENGTH = 20
 
 b = [BitVec('%d' % i, 8) for i in range(LENGTH)]
-nor_arg = BitVecVal(0, 8)
 s = Solver()
 
 for i in range(LENGTH):
-	s.add(ascii_printable(b[i]))
-
-#Found with emulation
-#offset5Val = ord('7')
-#offset17Val = ord('8')
+	s.add(ascii_numbers(b[i]))
 
 offset15Val = b[15] - 0x30 
 s.add(offset15Val <= 9)
@@ -51,7 +46,6 @@ s.add((offset17Val - offset0Val) ^ 0x8 == 0)
 offset5Val = b[5] - 0x30
 s.add(offset5Val <= 9)
 
-# nor
 s.add(nor((offset5Val - offset17Val), 0) == 0)
 
 s.add((offset15Val - offset1Val) ^ 0x6 == 0)
@@ -111,9 +105,6 @@ s.add(offset2Val <= 9)
 
 s.add(nor((offset2Val - offset16Val), 0) == 0)
 
-# Unsat
-#s.add((offset6Val - offset4Val) ^ 0x3 == 0)
-
 s.add((offset0Val % offset5Val) == 0)
 
 s.add((offset11Val * offset5Val) ^ 0x2A == 0)
@@ -127,7 +118,6 @@ s.add((offset11Val / offset3Val) ^ 0x2 == 0)
 
 s.add((offset14Val - offset13Val) ^ 0xFFFFFFF9 == 0)
 
-# No comprobado
 s.add((offset19Val + offset18Val) ^ 0xC == 0)
 
 if s.check() == sat:
