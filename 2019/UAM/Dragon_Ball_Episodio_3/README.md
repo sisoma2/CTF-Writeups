@@ -9,11 +9,11 @@
 ## Static Analysis Solution
 
 ### False flag
-We open the binary in IDA and we see it has the debugging symbols:
+First, we open the binary in IDA and we see it has the debugging symbols:
 
 !['Debug Symbols'](images/Debug_symbols.PNG)
 
-Looking at `main` it is simple to see it has an encrypted buffer, a decrypt function and a `strcmp` with the decrypted buffer.
+By looking at `main` it is simple to see it has an encrypted buffer, a decrypt function and a `strcmp` with the decrypted buffer.
 
 !['Main function'](images/Main.PNG)
 
@@ -31,11 +31,11 @@ There's also the function `vector:vector` which searches for software breakpoint
 
 !['Hooking function'](images/Hooking_function.PNG)
 
-If we decompile the function `malloc` we see what seems to be the VM code.
+Decompiling the function `malloc` we get what seems to be the VM code.
 
 !['VMCode function'](images/VMCode_function.PNG)
 
-If we look into more detail the opcodes of the VM  we can see a pattern repeating:
+Looking at the opcodes of the VM with more detail we can see a repeating pattern (Opcodes 51, 68, 105 and 136):
 
 !['VMCode pattern'](images/VM_pattern.PNG)
 
@@ -45,7 +45,7 @@ So if we extract the values after the opcode 51 and the values after the opcode 
 
 !['Static solution'](images/Static_solution.PNG)
 
-I used a little Python script to automate the XOR operation it's in the `solver.py` file.
+I used a short Python script to automate the XOR operation, I saved the script in the `solver.py` file.
 If we check this value in the challenge we can see it works:
 
 !['Flag OK'](images/Flag_OK.PNG)
@@ -56,9 +56,9 @@ Finally, if we calculate the MD5 hash of `G0T_h00k1ng` we get the flag:
 
 ## Angr Solution
 
-If you're lazy to reverse the full VM code (like me sometimes), you can use Angr to get automagically the flag.
+Assuming you're lazy to reverse the full VM code (like me sometimes), you can use Angr to get automagically the flag.
 
-Just keep in mind the buffer in stdin has to be 12 bytes long because the program overwrites the last byte with the NULL byte.
+Just keep in mind that the buffer in stdin has to be 12 bytes long because the program overwrites the last byte with the NULL byte.
 
 !['Angr buffer'](images/Angr_buffer.PNG)
 
@@ -66,12 +66,12 @@ We set the find and avoid addresses and we're good to go:
 
 !['Angr config'](images/Angr_config.PNG)
 
-After we execute the Python script we get the value `G0T_h00k1ng` same as we got in the static solution:
+After we execute angr with Python we get the value `G0T_h00k1ng` which is the same we got in the static solution:
 
 !['Angr solution'](images/Angr_solution.PNG)
 
 ## IDA Script
 
-In the `solver.py` file I wrote a IDA Script to extract the values of the flag from the VM code and automatically get the flag:
+In the `solver.py` file I also wrote an IDA Script to extract the values of the flag from the VM code and automatically get the flag:
 
 !['IDA script'](images/IDA_Script.PNG)
