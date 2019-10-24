@@ -31,11 +31,7 @@ There's also the function `vector:vector` which searches for software breakpoint
 
 !['Hooking function'](images/Hooking_function.PNG)
 
-Decompiling the function `malloc` we get what seems to be the VM code.
-
-!['VMCode function'](images/VMCode_function.PNG)
-
-Looking at the opcodes of the VM with more detail we can see a repeating pattern (Opcodes 51, 68, 105 and 136):
+Decompiling the function `malloc` we get what seems to be the VM code. Looking at the opcodes of the VM with more detail we can see a repeating pattern (Opcodes 51, 68, 105 and 136):
 
 !['VMCode pattern'](images/VM_pattern.PNG)
 
@@ -46,6 +42,7 @@ So if we extract the values after the opcode 51 and the values after the opcode 
 !['Static solution'](images/Static_solution.PNG)
 
 I used a short Python script to automate the XOR operation, I saved the script in the `solver.py` file.
+
 If we check this value in the challenge we can see it works:
 
 !['Flag OK'](images/Flag_OK.PNG)
