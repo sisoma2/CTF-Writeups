@@ -33,7 +33,7 @@ If we look into the function we can notice it's comparing the XOR encoded value 
 
 If the encrypted value matches `g;jf"db%` we get the good boy message:
 
-!['Encoded flag'](images/Encrypted_flag.PNG)
+!['Good boy'](images/Good_boy.PNG)
 
 ### Python Script
 
