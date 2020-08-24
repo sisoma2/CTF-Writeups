@@ -130,7 +130,7 @@ If we continue analyzing the function, we can see how it iterates the user input
 invoke-static {v8, v9, v4, v5}, Lcom/google/ctf/sandbox/R;->ő(JJ)[J
 ```
 
-Analyzing the function `ő(JJ)` we see that this one is decompilable and it looks like some recursive Fibonacci calculation is taking place.
+Analyzing the function `ő(JJ)` we see that this function is decompilable and it's the [Extended Euclidean Algorithm](https://www.geeksforgeeks.org/euclidean-algorithms-basic-and-extended/) [1].
 
 ```java
 public static long[] m0(long a, long b) {
@@ -323,3 +323,5 @@ ctypes.ArgumentError: argument 1: <class 'RecursionError'>: maximum recursion de
 ```
 
 So finally the flag is `CTF{y0u_c4n_k3ep_y0u?_m4gic_1_h4Ue_laser_b3ams!}`.
+
+[1] Thanks to **@KaoRz** for pointing out that it’s the Extended Euclidean Algorithm.
